@@ -178,12 +178,14 @@ while True:
         oled.display()
 
         #write data to csv file
-        fields = ['Temp(f)', 'Humidity', 'Pressure(atm)', 'Altitude(f)', 'Proximity(cm)',
-        'AmbientLight', 'VOCindex']
         with open('aq.csv', 'w', newline='') as f:
-            writer = csv.writer(f, fieldnames = fields)
-            writer.writeheader()
-            writer.writerow(tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index)
+            writer = csv.writer(f)
+            fields = ['Temp(f)', 'Humidity', 'Pressure(atm)', 'Altitude(f)', 'Proximity(cm)',
+                    'AmbientLight', 'VOCindex']
+            values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
+            writer.writerow(fields)
+            for value in values:
+                writer.writerow(values)
 
         # update u
         u = u+1
