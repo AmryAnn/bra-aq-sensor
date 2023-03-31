@@ -155,6 +155,16 @@ while True:
             mqttc.publish (topic_sgp40_voc_index, payload = voc_index, retain = True)
             u=0 #reset to 0 to begin logging data after another 15 minutes
 
+                    #write data to csv file
+            with open('aq.csv', 'w', newline='') as f:
+                writer = csv.writer(f)
+                fields = ['Temp(f)', 'Humidity', 'Pressure(atm)', 'Altitude(f)', 'Proximity(cm)',
+                        'AmbientLight', 'VOCindex']
+                values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
+                writer.writerow(fields)
+                for value in values:
+                    writer.writerow(values)
+
         #displaying data to the OLED (we are only displaying a few things because of screen size)
         #with font(1) a y difference of 16 is good spacing for each line
         #we are converting values to int before printing for space (and we don't really need better resolution)
@@ -177,16 +187,6 @@ while True:
 
         oled.display()
 
-        #write data to csv file
-        if u = 60:
-            with open('aq.csv', 'w', newline='') as f:
-                writer = csv.writer(f)
-                fields = ['Temp(f)', 'Humidity', 'Pressure(atm)', 'Altitude(f)', 'Proximity(cm)',
-                        'AmbientLight', 'VOCindex']
-                values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
-                writer.writerow(fields)
-                for value in values:
-                    writer.writerow(values)
 
         # update u
         u = u+1
