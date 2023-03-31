@@ -141,12 +141,6 @@ while True:
 
         print (" ") #blank line for easier readability
 
-        with open('aq.csv', 'a', newline='') as f:
-            writer = csv.writer(f)
-            fields = ['Temp(f)', 'Humidity', 'Pressure(atm)', 'Altitude(f)', 'Proximity(cm)',
-                    'AmbientLight', 'VOCindex']
-            values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
-            writer.writerow(fields)
 
         if u==60:
             #send data every 90 seconds to Cayenne, u=900
@@ -187,7 +181,7 @@ while True:
 
         with open('aq.csv', 'a', newline='') as f:
             writer = csv.writer(f)
-            #for value in values:
+            values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
             writer.writerow(values)
 
 
