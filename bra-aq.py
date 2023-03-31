@@ -32,7 +32,7 @@ import csv
 #These values are used to give BME280 and SGP40 some time to take samples and log data to Cayenne
 initialize=True
 n=2
-u=90
+u=60
 
 #MQTT Cayenne setup - you will need your own username, password and clientid
 #To setup a Cayenne account go to https://mydevices.com/cayenne/signup/
@@ -140,7 +140,7 @@ while True:
 
         print (" ") #blank line for easier readability
 
-        if u==90:
+        if u==60:
             #send data every 90 seconds to Cayenne, u=900
 
             #publishing data to Cayenne (we are not publishing everything)
@@ -178,14 +178,15 @@ while True:
         oled.display()
 
         #write data to csv file
-        with open('aq.csv', 'w', newline='') as f:
-            writer = csv.writer(f)
-            fields = ['Temp(f)', 'Humidity', 'Pressure(atm)', 'Altitude(f)', 'Proximity(cm)',
-                    'AmbientLight', 'VOCindex']
-            values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
-            writer.writerow(fields)
-            for value in values:
-                writer.writerow(values)
+        if u = 60:
+            with open('aq.csv', 'w', newline='') as f:
+                writer = csv.writer(f)
+                fields = ['Temp(f)', 'Humidity', 'Pressure(atm)', 'Altitude(f)', 'Proximity(cm)',
+                        'AmbientLight', 'VOCindex']
+                values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
+                writer.writerow(fields)
+                for value in values:
+                    writer.writerow(values)
 
         # update u
         u = u+1
