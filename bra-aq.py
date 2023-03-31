@@ -129,7 +129,7 @@ while True:
         print ("BME280 \t | Temperature: %.1f \xb0F" %tempf)
         #print ("BME280 \t | Temperature: %.1f \xb0C" %tempc)
         print ("BME280 \t | Humidity: %.1f %%RH" %humidity)
-        print ("BME280 \t | Pressure: %.2f hPa" %(pressure/100))
+        print ("BME280 \t | Pressure: %.2f atm" %(pressure/101300))
         #print ("BME280 \t | Altitude: %.2f m" %altitudem)
         print ("BME280 \t | Altitude: %.2f ft" %altitudef)
 
@@ -146,7 +146,7 @@ while True:
             #publishing data to Cayenne (we are not publishing everything)
             mqttc.publish (topic_bme_temp, payload = tempf, retain = True)
             mqttc.publish (topic_bme_hum, payload = humidity, retain = True)
-            mqttc.publish (topic_bme_pressure, payload = pressure, retain = True)
+            mqttc.publish (topic_bme_pressure, payload = int(pressure/101300), retain = True)
             mqttc.publish (topic_bme_altitude, payload = altitudef, retain = True)
 
             mqttc.publish (topic_prox_proximity, payload = proximity, retain = True)
@@ -183,7 +183,7 @@ while True:
         with open('aq.csv', 'w', newline='') as f:
             writer = csv.writer(f, fieldnames = fields)
             writer.writeheader()
-            writer.writerow(tempf, humidity, pressure, altitudef, proximity, ambient, voc_index)
+            writer.writerow(tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index)
 
         # update u
         u = u+1
