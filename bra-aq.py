@@ -162,8 +162,8 @@ while True:
                         'AmbientLight', 'VOCindex']
                 values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
                 writer.writerow(fields)
-                for value in values:
-                    writer.writerow(values)
+                #for value in values:
+                writer.writerow(values)
 
         #displaying data to the OLED (we are only displaying a few things because of screen size)
         #with font(1) a y difference of 16 is good spacing for each line
