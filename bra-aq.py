@@ -72,12 +72,7 @@ topic_prox_ambient = "v1/" + username + "/things/" + clientid + "/data/6"
 
 topic_sgp40_voc_index = "v1/" + username + "/things/" + clientid + "/data/7"
 
-with open('aq.csv', 'w', newline='') as f:
-    writer = csv.writer(f)
-    fields = ['Temp(f)', 'Humidity', 'Pressure(atm)', 'Altitude(f)', 'Proximity(cm)',
-            'AmbientLight', 'VOCindex']
-    values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
-    writer.writerow(fields)
+
 
 #Loop runs until we force an exit or something breaks
 while True:
@@ -145,6 +140,13 @@ while True:
         print ("SGP40 \t | VOC Index: %.2f" %voc_index)
 
         print (" ") #blank line for easier readability
+
+        with open('aq.csv', 'w', newline='') as f:
+            writer = csv.writer(f)
+            fields = ['Temp(f)', 'Humidity', 'Pressure(atm)', 'Altitude(f)', 'Proximity(cm)',
+                    'AmbientLight', 'VOCindex']
+            values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
+            writer.writerow(fields)
 
         if u==60:
             #send data every 90 seconds to Cayenne, u=900
