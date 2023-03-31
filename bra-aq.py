@@ -185,9 +185,7 @@ while True:
     values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
     writer.writerow(fields)
         if u == 60:
-            with open('aq.csv', 'a', newline='') as f:
-                writer = csv.writer(f)
-                writer.writerow(values)
+            writer.writerow(values)
 
 
         # update u
