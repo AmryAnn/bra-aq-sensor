@@ -141,7 +141,7 @@ while True:
 
         print (" ") #blank line for easier readability
 
-        with open('aq.csv', 'w', newline='') as f:
+        with open('aq.csv', 'a', newline='') as f:
             writer = csv.writer(f)
             fields = ['Temp(f)', 'Humidity', 'Pressure(atm)', 'Altitude(f)', 'Proximity(cm)',
                     'AmbientLight', 'VOCindex']
@@ -185,10 +185,10 @@ while True:
 
         oled.display()
 
-        with open('aq.csv', 'a', newline='') as f:
-            writer = csv.writer(f)
+        #with open('aq.csv', 'a', newline='') as f:
+        writer = csv.writer(f)
             #for value in values:
-            writer.writerow(values)
+        writer.writerow(values)
 
 
         # update u
