@@ -130,7 +130,7 @@ while True:
         print ("BME280 \t | Temperature: %.1f \xb0F" %tempf)
         #print ("BME280 \t | Temperature: %.1f \xb0C" %tempc)
         print ("BME280 \t | Humidity: %.1f %%RH" %humidity)
-        print ("BME280 \t | Pressure: %.2f atm" %(pressure/101300))
+        print ("BME280 \t | Pressure: %.2f kpa" %(pressure/1000))
         #print ("BME280 \t | Altitude: %.2f m" %altitudem)
         print ("BME280 \t | Altitude: %.2f ft" %altitudef)
 
@@ -148,7 +148,7 @@ while True:
             #publishing data to Cayenne (we are not publishing everything)
             mqttc.publish (topic_bme_temp, payload = tempf, retain = True)
             mqttc.publish (topic_bme_hum, payload = humidity, retain = True)
-            mqttc.publish (topic_bme_pressure, payload = int(pressure/101300), retain = True)
+            mqttc.publish (topic_bme_pressure, payload = int(pressure/1000), retain = True)
             mqttc.publish (topic_bme_altitude, payload = altitudef, retain = True)
 
             mqttc.publish (topic_prox_proximity, payload = proximity, retain = True)
@@ -159,7 +159,7 @@ while True:
 
             with open('aq.csv', 'a', newline='') as f:
                 writer = csv.writer(f)
-                values = [time.strftime("%a %b %d %Y %I:%M:%S%p", time.localtime()), tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
+                values = [time.strftime("%a %b %d %Y %I:%M:%S%p", time.localtime()), tempf, humidity, int(pressure/1000), altitudef, proximity, ambient, voc_index]
                 writer.writerow(values)
 
         #displaying data to the OLED (we are only displaying a few things because of screen size)
