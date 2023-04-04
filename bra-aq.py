@@ -159,7 +159,7 @@ while True:
 
             with open('aq.csv', 'a', newline='') as f:
                 writer = csv.writer(f)
-                values = [tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
+                values = [time.strftime("%a %b %d %Y %I:%M:%S%p", time.localtime()), tempf, humidity, int(pressure/101300), altitudef, proximity, ambient, voc_index]
                 writer.writerow(values)
 
         #displaying data to the OLED (we are only displaying a few things because of screen size)
