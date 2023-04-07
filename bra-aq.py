@@ -179,7 +179,7 @@ while True:
         oled.print(int(humidity))
 
         oled.set_cursor(0,32)
-        oled.print("VOCi:") #hPa is a more typical output and helps with spacing
+        oled.print("VI:") #hPa is a more typical output and helps with spacing
         oled.print(voc_index)
 
         oled.display()
