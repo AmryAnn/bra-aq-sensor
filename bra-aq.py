@@ -22,7 +22,7 @@
 
 #Must download Qwiic Python Library - https://github.com/sparkfun/qwiic_py
 from __future__ import print_function, division
-import paho.mqtt.client as mqtt
+#import paho.mqtt.client as mqtt
 import qwiic
 import qwiic_sgp40    #Need to specify the SGP40
 import time
@@ -36,13 +36,13 @@ u=60
 
 #MQTT Cayenne setup - you will need your own username, password and clientid
 #To setup a Cayenne account go to https://mydevices.com/cayenne/signup/
-username = "d4e96770-bf92-11ed-b0e7-e768b61d6137"
-password = "29a9b05465389b3bfda761f1b95fc402ff445350"
-clientid = "5f0f0b80-c515-11ed-b0e7-e768b61d6137"
+"""username = "1770c4d6-e511-4f20-902e-c4b2f68abdaa"
+password = "0000000000BAC96A"
+clientid = "40589AC6"
 mqttc=mqtt.Client(client_id = clientid)
 mqttc.username_pw_set(username, password = password)
-mqttc.connect("mqtt.mydevices.com", port=1883, keepalive=60)
-mqttc.loop_start()
+mqttc.connect("mqtt.zafron.dev", port=1883, keepalive=60)
+mqttc.loop_start()"""
 
 #Qwiic Board define
 prox = qwiic.QwiicProximity()
@@ -146,7 +146,7 @@ while True:
             #send data every 90 seconds to Cayenne, u=900
 
             #publishing data to Cayenne (we are not publishing everything)
-            mqttc.publish (topic_bme_temp, payload = tempf, retain = True)
+            """mqttc.publish (topic_bme_temp, payload = tempf, retain = True)
             mqttc.publish (topic_bme_hum, payload = humidity, retain = True)
             mqttc.publish (topic_bme_pressure, payload = int(pressure/1000), retain = True)
             mqttc.publish (topic_bme_altitude, payload = altitudef, retain = True)
@@ -154,7 +154,7 @@ while True:
             mqttc.publish (topic_prox_proximity, payload = proximity, retain = True)
             mqttc.publish (topic_prox_ambient, payload = ambient, retain = True)
 
-            mqttc.publish (topic_sgp40_voc_index, payload = voc_index, retain = True)
+            mqttc.publish (topic_sgp40_voc_index, payload = voc_index, retain = True)"""
             u=0 #reset to 0 to begin logging data after another 15 minutes
 
             with open('aq.csv', 'a', newline='') as f:
