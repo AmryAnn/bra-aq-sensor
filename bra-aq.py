@@ -198,6 +198,6 @@ while True:
 
     #if we break things or exit then exit cleanly
     except (EOFError, SystemExit, KeyboardInterrupt):
-        mqttc.disconnect()
-        print("\nDisconnect MQTT and exit demo.")
+        #mqttc.disconnect()
+        print("\nUnknown error.")
         sys.exit()
