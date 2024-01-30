@@ -62,7 +62,7 @@ oled.display()
 oled.set_font_type(1)
 
 #set MQTT topics (we are not setting topics for everything)
-topic_bme_temp = "v1/" + username + "/things/" + clientid + "/data/1"
+"""topic_bme_temp = "v1/" + username + "/things/" + clientid + "/data/1"
 topic_bme_hum = "v1/" + username + "/things/" + clientid + "/data/2"
 topic_bme_pressure = "v1/" + username + "/things/" + clientid + "/data/3"
 topic_bme_altitude = "v1/" + username + "/things/" + clientid + "/data/4"
@@ -71,7 +71,7 @@ topic_prox_proximity = "v1/" + username + "/things/" + clientid + "/data/5"
 topic_prox_ambient = "v1/" + username + "/things/" + clientid + "/data/6"
 
 topic_sgp40_voc_index = "v1/" + username + "/things/" + clientid + "/data/7"
-
+"""
 
 
 #Loop runs until we force an exit or something breaks
