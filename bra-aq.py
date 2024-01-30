@@ -180,7 +180,7 @@ while True:
 
         oled.set_cursor(0,32)
         #oled.print("VI:") #hPa is a more typical output and helps with spacing
-        oled.print(time.strftime(%I:%M%p", time.localtime()))
+        oled.print(time.strftime("%I:%M%p", time.localtime()))
 
         oled.display()
 
